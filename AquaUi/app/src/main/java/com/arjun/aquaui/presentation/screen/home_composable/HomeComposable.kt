@@ -10,6 +10,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,6 +22,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -37,17 +39,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.arjun.aquaui.R
+import com.arjun.aquaui.presentation.reusable.CustomSlider
 import com.arjun.aquaui.presentation.reusable.TicketCardComposable
 import com.arjun.aquaui.presentation.reusable.UpcommingShowComposable
 import com.arjun.aquaui.presentation.screen.home_composable.CategoryButtonComposableList
 import com.arjun.aquaui.ui.theme.AquaUiTheme
 import com.arjun.aquaui.ui.theme.Hint20
 import com.arjun.aquaui.utils.Constants
+import okhttp3.internal.immutableListOf
 import okhttp3.internal.wait
 import java.util.Stack
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen() {
     Scaffold(topBar = {
@@ -82,9 +86,8 @@ fun HomeScreen() {
 
         Column {
 
-            Spacer(modifier = Modifier.height(40.dp))
-            Text(text = "helo wlldldddd")
-
+            Spacer(modifier = Modifier.height(60.dp))
+            CustomSlider(modifier = Modifier)
             CategoryButtonComposableList(Constants.categoryList)
             TicketCardComposable()
             Spacer(modifier =Modifier.height(12.dp))
